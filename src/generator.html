@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="crossword" content="about philosophy">
+        <meta name="authors" content="anton and margot">
+        <title>generate!</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="grid" class="grid"></div>
+        <div id="inputQ" class="inputQ">
+            <textarea id="questions" class="inputs" placeholder="enter questions" rows="30" cols="50"></textarea>
+        <!--/div-->
+        <!--div-->
+            <textarea id="answers" class="inputs" placeholder="enter answers" rows="30" cols="50"></textarea>
+
+        <button class="button" id="generateBtn" onclick="createCrossWordPuzzle()">generate</button>
+        </div>
+        <script src="word.js"></script>
+        <script src="layout.js"></script>
+        <script src="generator.js"></script>
+    </body>
+</html>
