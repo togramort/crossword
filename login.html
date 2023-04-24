@@ -5,18 +5,18 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-   <button id="logS">student</button>
-   <button id="logT" onclick="showLogin()">teacher</button>
+   <button id="logS" class="button">student</button>
+   <button id="logT" class="button" onclick="showLogin()">teacher</button>
 
    <div id="loginModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeLoginModal()">&times;</span>
       <form id="loginForm" onsubmit="return validateLogin()">
         <label for="username">login:</label>
-        <input type="text" id="username" name="username"><br>
+        <input type="text" class="inputForm" id="username" name="username"><br><br>
         <label for="password">password:</label>
-        <input type="password" id="password" name="password"><br>
-        <input type="submit" value="login">
+        <input type="password" class="inputForm" id="password" name="password"><br>
+        <input type="submit" class="button" value="login">
       </form>
     </div>
   </div>
