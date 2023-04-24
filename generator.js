@@ -88,36 +88,28 @@ function canPlace(grid, word, x, y, idxWord) {
 
     var countV = 0;
     if (maybeV && isVertical) {
-        if(grid[x - 1][y] != '_'){
-            maybeV = false;
-        } else {
-            for (var i = x; i < x + word.length + 1; ++i) {
-                if (grid[i][y] == '_' && grid[i][y + 1] == '_' && grid[i][y - 1] == '_') {
-                    ++countV;
-                } else if (grid[i][y] == word[i - x]) {
-                    ++countV;
-                } else {
-                    maybeV = false;
-                    break;
-                }
+      for (var i = x; i < x + word.length + 1; ++i) {
+            if (grid[i][y] == '_' && grid[i][y + 1] == '_' && grid[i][y - 1] == '_') {
+                ++countV;
+            } else if (grid[i][y] == word[i - x]) {
+                ++countV;
+            } else {
+                maybeV = false;
+                break;
             }
-		}
+        }
     }
 
     var countH = 0;
     if (maybeH && isHorizontal) {
-        if(grid[x][y - 1] != '_') {
-            maybeH = false;
-        } else {
-            for (var i = y; i < y + word.length + 1; ++i) {
-                if (grid[x][i] == '_' && grid[x + 1][i] == '_' && grid[x-1][i] == '_'  ) {
-                    ++countH;
-                } else if (grid[x][i] == word[i - y]) {
-                    ++countH;
-                } else {
-                    maybeH = false;
-                    break;
-                }
+    	for (var i = y; i < y + word.length + 1; ++i) {
+            if (grid[x][i] == '_' && grid[x + 1][i] == '_' && grid[x - 1][i] == '_'  ) {
+                ++countH;
+            } else if (grid[x][i] == word[i - y]) {
+                ++countH;
+            } else {
+                maybeH = false;
+                break;
             }
         }
     }
@@ -143,11 +135,11 @@ function placeOnGrid(word, grid, x, y, dir) {
 
 function wordPlacement() {
     let maxWords = words.length;
-		var countPlacedWords = 0;
+	var countPlacedWords = 0;
     word = words.pop();
     let count = 1;
     var amount = 0;
-    placeWordH(grid, word, (gridSize / 2) - 1 - 5, (gridSize / 2) - Math.floor(word.length / 2) - 5);
+    placeWordH(grid, word, (gridSize / 2) - 5, (gridSize / 2) - Math.floor(word.length / 2) - 4);
     while (count < maxWords && words.length > 0) {
         var placements = [];
         word = words.pop();
@@ -165,7 +157,7 @@ function wordPlacement() {
             var x = placements[i][1];
             var y = placements[i][2];
             var dir = placements[i][3];
-            if (dir != 'nn') {
+            if (dir != 'nn'){
                 ++amount;
                 grid = placeOnGrid(word, grid, x, y, dir);
                 ++countPlacedWords;
@@ -173,7 +165,7 @@ function wordPlacement() {
             }
         }
     }
-    alert ("использовано слов: " + amount);
+    alert("использовано слов: " + amount);
     displayCrosswordPuzzle(grid);
 }
 
