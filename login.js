@@ -26,3 +26,7 @@ function validateLogin() {
     return false;
   }
 }
+
+function openCrossword() {
+  window.open("crossword.html", "_self");
+}
