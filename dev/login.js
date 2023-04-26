@@ -13,9 +13,7 @@ function closeLoginModal() {
 }
 
 // функция проверки логина и пароля
-const form = document.querySelector('form');
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
+function checkUser() {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
   fetch('/', {
@@ -31,7 +29,7 @@ form.addEventListener('submit', function(event) {
   }).catch(error => {
     error ? console.log("oops: ", error) : console.log("all cool");
   })
-});
+};
 
 function openCrossword() {
   window.open("crossword.html", "_self");
