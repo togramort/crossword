@@ -82,7 +82,6 @@ function placeWordV(grid, word, posX, posY) {
 }
 
 function canPlace(grid, word, x, y, idxWord) {
-    console.log(word, x, y, idxWord)
     var maybeH = true;
     var maybeV = true;
     var isVertical = false;
@@ -113,7 +112,6 @@ function canPlace(grid, word, x, y, idxWord) {
         maybeH = false;
     }
 
-    console.log("afetr ", word, x, y, idxWord, maybeV, maybeH)
     var countV = 0;
     if (maybeV && isVertical) {
         for (var i = x; i < x + word.length + 1; ++i) {
@@ -202,7 +200,6 @@ function wordPlacement() {
 
 
 function displayCrosswordPuzzle(bestGrid) {
-    console.log(crosswordAll)
     console.log("INNNNNNN DIIIIIIISSSPL")
     for (let row = 0; row < gridSize; ++row) {
         for (let column = 0; column < gridSize; ++column) {
