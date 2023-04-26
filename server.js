@@ -4,7 +4,12 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const loginHandler = require('./models/log');
+require('dotenv').config();
 const PORT = process.env.PORT || 8080;
+
+export const NODE_URL = `http://localhost:${PORT}/`;
+
+console.log(process.env);
 
 const app = express();
 
