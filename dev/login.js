@@ -14,6 +14,9 @@ function closeLoginModal() {
   modal.style.display = "none";
 }
 
+function openCross() {
+  window.open("generator.html", "_self");
+}
 
 
 // функция проверки логина и пароля
