@@ -32,6 +32,18 @@ app.get('/generator', (req, res) => {
     });
 });
 
+app.get('/generator.html', function(req, res) {
+    res.redirect('/generator');
+});
+  
+  app.get('/crossword.html', function(req, res) {
+    res.redirect('/crossword');
+});
+  
+  app.get('/index.html', function(req, res) {
+    res.redirect('/');
+});
+
 
 app.use((req, res) => {
     res.status(404).send('Page not found');
