@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/generator', (req, res) => {
-      res.setHeader('content-type', 'utf8', 'text/html');
+      res.setHeader('content-type', 'text/html');
       fs.readFile('generator.html', 'utf8', (error, data) => {
         error ? res.send("oops: ", error) : res.send(data);
     });
