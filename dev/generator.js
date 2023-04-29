@@ -246,13 +246,11 @@ function writeDataToJson(grid) {
     const data = [];
     for (let i = 0; i < gridSize; i++) {
       for (let j = 0; j < gridSize; j++) {
-        if (grid[i][j] !== '') {
           data.push({
-            x: j,
-            y: i,
+            x: i,
+            y: j,
             symbol: grid[i][j]
-          });
-        }
+        });
       }
     }
     const jsonData = JSON.stringify(data);
