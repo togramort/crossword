@@ -243,7 +243,7 @@ function printClues() {
 }
 
 function writeDataToJson(grid) {  
-    const data = [];
+    let data = [];
     for (let i = 0; i < gridSize; i++) {
       for (let j = 0; j < gridSize; j++) {
           data.push({
