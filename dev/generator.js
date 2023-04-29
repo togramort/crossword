@@ -244,8 +244,8 @@ function printClues() {
 
 function writeDataToJson(grid) {  
     const data = [];
-    for (let i = 0; i < grid.length; i++) {
-      for (let j = 0; j < grid[i].length; j++) {
+    for (let i = 0; i < gridSize; i++) {
+      for (let j = 0; j < gridSize; j++) {
         if (grid[i][j] !== '') {
           data.push({
             x: j,
