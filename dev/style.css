@@ -44,7 +44,7 @@
     font-size: 16px;
 }
 
-label, input {
+label {
     display: block;
     margin-bottom: 10px;
 }
@@ -76,14 +76,15 @@ label, input {
 .output {
     float: left;
     margin-left: 10px;
+    display: flex;
+    align-items: stretch;
 }
 
 .outputs {
-    float: left;
+    display: inline-block;
     margin-right: 20px;
     margin-top: 20px;
     width: 400px;
-    height: 650px;
     border: 15px solid #333;
     text-align: left;
     font-size: large;
@@ -100,6 +101,13 @@ label, input {
     text-align: center;
     display: table-cell;
     vertical-align: middle;
+}
+
+.inputLetter {
+    background-color: transparent;
+    font-size: large;
+    text-align: center;
+    font-weight: 600;
 }
 
 /* Buttons */

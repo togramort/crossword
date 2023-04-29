@@ -27,7 +27,7 @@ function getWords() {
     var clues = document.getElementById('questions').value;
     clues = clues.split('\n');
     for (let i = 0; i < text.length; ++i) {
-        words.push(text[i]);
+        words.push(text[i].toLowerCase());
     }
 
     crosswordAll = clues.map((clue, index) => {
@@ -200,7 +200,6 @@ function wordPlacement() {
 
 
 function displayCrosswordPuzzle(bestGrid) {
-    console.log("INNNNNNN DIIIIIIISSSPL")
     for (let row = 0; row < gridSize; ++row) {
         for (let column = 0; column < gridSize; ++column) {
             let slot = document.getElementById(row + "_" + column);
@@ -223,6 +222,7 @@ function displayCrosswordPuzzle(bestGrid) {
         }
     }
     printClues();
+    writeDataToJson(bestGrid);
 }
 
 function printClues() {
@@ -240,4 +240,45 @@ function printClues() {
             vert.innerHTML += textNode + "<br>\n";
         }
     }
+}
+
+function writeDataToJson(grid) {  
+    const data = [];
+    for (let i = 0; i < grid.length; i++) {
+      for (let j = 0; j < grid[i].length; j++) {
+        if (grid[i][j] !== '') {
+          data.push({
+            x: j,
+            y: i,
+            symbol: grid[i][j]
+          });
+        }
+      }
+    }
+    const jsonData = JSON.stringify(data);
+    fetch('/uploadcross', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: jsonData,
+    })
+    .then(response => response.text())
+    .catch(error => {
+        console.error(error)
+    });
+
+    let clues = [];
+    clues = crosswordAll.map(({id, clue, dir}) => ({id, clue, dir}));
+    fetch('/uploadclues', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify(clues),
+    })
+    .then(response => response.text())
+    .catch(error => {
+        console.error(error)
+    });
 }
