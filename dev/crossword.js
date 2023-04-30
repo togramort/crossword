@@ -41,13 +41,13 @@ getJson();
 
 function printGrid() {
     makeGrid();
-    displayCrosswordPuzzle(grid);
+    displayCrosswordPuzzle(gridAll);
 }
 
 function makeGrid() {
     for (let row = 0; row < gridSize; row++) {
         for (let column = 0; column < gridSize; column++) {
-            grid[row][column] = emptyCell;
+            gridAll[row][column] = emptyCell;
         }
     }
 }
@@ -99,6 +99,8 @@ function printClues() {
     }
 }
 
+
+
 function checkCrossword() {
     let allCorrect = true;
     for (var p = 0; p < gridAll.length; ++p) {
@@ -110,10 +112,16 @@ function checkCrossword() {
             let res = gridAll[p].symbol;
             if (letter != res) {
                 allCorrect = false;
-                break;
+                temp.style.backgroundColor = "#FF0000";
+
             }
+            temp.setAttribute("readonly", true);
+            // Сохраняем значение ячейки в localStorage
+            localStorage.setItem("i_" + i + "_" + j, letter);
         }
     }
+
+
     if (allCorrect == true) {
         alert("wooow congrats! al good ;)");
     } else if (allCorrect == false) {
@@ -122,6 +130,9 @@ function checkCrossword() {
         alert ("unexpected error");
     }
 }
+
+
+
 
 function getCurrentSlot(x, y) {
     const currentSlot = gridAll.find(slot => slot.x === x && slot.y === y);
@@ -161,7 +172,7 @@ document.addEventListener('keydown', function(event) {
     const { x, y } = getCurrentCursorPosition();
     const { current, right, left, down, up } = getCurrentSlot(x, y);
     let nextSlot;
-  
+
     if (event.key === 'ArrowRight' && right) {
       nextSlot = right;
     } else if (event.key === 'ArrowLeft' && left) {
@@ -173,12 +184,12 @@ document.addEventListener('keydown', function(event) {
     } else {
       return;
     }
-  
+
     const nextInput = document.getElementById("i_" + nextSlot.x + "_" + nextSlot.y);
     if (nextInput) {
       nextInput.focus();
       nextInput.select();
     }
-  
+
     event.preventDefault();
 });

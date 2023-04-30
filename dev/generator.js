@@ -241,7 +241,7 @@ function printClues() {
     }
 }
 
-function writeDataToJson() {  
+function writeDataToJson() {
     let data = [];
     console.log("gr in wr", grid)
     for (let i = 0; i < gridSize; i++) {
