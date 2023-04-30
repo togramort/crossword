@@ -9,7 +9,6 @@ function getJson() {
       .then(response => response.json())
       .then(data => {
         gridAll = data;
-        console.log("gridAll", gridAll);
       })
       .catch(error => console.error(error));
 
@@ -17,7 +16,6 @@ function getJson() {
     .then(response => response.json())
     .then(data => {
     crosswordAll = data;
-    console.log("crossAll", crosswordAll);
     })
     .catch(error => console.error(error));
 }
@@ -55,7 +53,6 @@ function makeGrid() {
 }
 
 function displayCrosswordPuzzle(bestGrid) {
-    console.log("INNNNNNN DIIIIIIISSSPL")
     for (var i = 0; i < gridAll.length; ++i) {
         var row = gridAll[i].x;
         var column = gridAll[i].y;
@@ -99,5 +96,29 @@ function printClues() {
         } else if (crosswordAll[i].dir == 'v') {
             vert.innerHTML += textNode + "<br><br>";
         }
+    }
+}
+
+function checkCrossword() {
+    let allCorrect = true;
+    for (var p = 0; p < gridAll.length; ++p) {
+        if (gridAll[p].symbol != '_' && isNaN(gridAll[p].symbol)) {
+            let i = gridAll[p].x;
+            let j = gridAll[p].y;
+            let temp = document.getElementById("i_" + i + "_" + j);
+            let letter = temp.value;
+            let res = gridAll[p].symbol;
+            if (letter != res) {
+                allCorrect = false;
+                break;
+            }
+        }
+    }
+    if (allCorrect == true) {
+        alert("wooow congrats! al good ;)");
+    } else if (allCorrect == false) {
+        alert("naaah something wrong ;(");
+    } else {
+        alert ("unexpected error");
     }
 }

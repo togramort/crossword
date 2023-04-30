@@ -222,7 +222,6 @@ function displayCrosswordPuzzle(bestGrid) {
         }
     }
     printClues();
-    writeDataToJson(bestGrid);
 }
 
 function printClues() {
@@ -242,17 +241,19 @@ function printClues() {
     }
 }
 
-function writeDataToJson(grid) {  
+function writeDataToJson() {  
     let data = [];
+    console.log("gr in wr", grid)
     for (let i = 0; i < gridSize; i++) {
       for (let j = 0; j < gridSize; j++) {
           data.push({
             x: i,
             y: j,
             symbol: grid[i][j]
-        });
-      }
+          });
+        }
     }
+    console.log("data in wr", data)
     const jsonData = JSON.stringify(data);
     fetch('/uploadcross', {
         method: 'POST',
@@ -262,6 +263,7 @@ function writeDataToJson(grid) {
         body: jsonData,
     })
     .then(response => response.text())
+    .then(alert('successfully sent'))
     .catch(error => {
         console.error(error)
     });
