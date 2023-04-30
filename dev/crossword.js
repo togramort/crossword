@@ -122,3 +122,63 @@ function checkCrossword() {
         alert ("unexpected error");
     }
 }
+
+function getCurrentSlot(x, y) {
+    const currentSlot = gridAll.find(slot => slot.x === x && slot.y === y);
+    if (!currentSlot) {
+      return null;
+    }
+    const { x: currentX, y: currentY } = currentSlot;
+    const nextSlotRight = gridAll.find(slot => slot.x === currentX && slot.y === currentY + 1);
+    const nextSlotLeft = gridAll.find(slot => slot.x === currentX && slot.y === currentY - 1);
+    const nextSlotDown = gridAll.find(slot => slot.x === currentX + 1 && slot.y === currentY);
+    const nextSlotUp = gridAll.find(slot => slot.x === currentX - 1 && slot.y === currentY);
+    return {
+      current: currentSlot,
+      right: nextSlotRight,
+      left: nextSlotLeft,
+      down: nextSlotDown,
+      up: nextSlotUp,
+    };
+}
+
+function getCurrentCursorPosition() {
+    const input = document.activeElement;
+    if (input == null) {
+        return;
+    }
+    const [, row, column] = input.id.split('_');
+    const x = parseInt(row, 10);
+    const y = parseInt(column, 10);
+    const slot = gridAll.find(slot => slot.x === x && slot.y === y);
+    if (!slot) {
+      return null;
+    }
+    return { x, y };
+}
+
+document.addEventListener('keydown', function(event) {
+    const { x, y } = getCurrentCursorPosition();
+    const { current, right, left, down, up } = getCurrentSlot(x, y);
+    let nextSlot;
+  
+    if (event.key === 'ArrowRight' && right) {
+      nextSlot = right;
+    } else if (event.key === 'ArrowLeft' && left) {
+      nextSlot = left;
+    } else if (event.key === 'ArrowDown' && down) {
+      nextSlot = down;
+    } else if (event.key === 'ArrowUp' && up) {
+      nextSlot = up;
+    } else {
+      return;
+    }
+  
+    const nextInput = document.getElementById("i_" + nextSlot.x + "_" + nextSlot.y);
+    if (nextInput) {
+      nextInput.focus();
+      nextInput.select();
+    }
+  
+    event.preventDefault();
+});
