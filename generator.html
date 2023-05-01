@@ -9,15 +9,15 @@
     </head>
     <body>
         <div id="grid" class="grid"></div>
-        <div id="inputQ" class="inputQ">
-            <textarea id="questions" class="inputs" placeholder="enter clues. new clue - new line (enter needed)" rows="30" cols="50"></textarea>
-            <textarea id="answers" class="inputs" placeholder="enter answers. new answer - new line (enter needed)" rows="30" cols="50"></textarea>
-            <button class="button" id="generateBtn" onclick="getWords()">generate</button>
-        </div>
         <div id="output" class="output">
             <div id="questionsV" class="outputs"></div>
             <div id="questionsH" class="outputs"></div>
             <button class="button" id="sendBtn" onclick="writeDataToJson()">send</button>
+        </div>
+        <div id="inputQ" class="inputQ">
+            <textarea id="questions" class="inputs" placeholder="enter clues. new clue - new line (enter needed)" rows="30" cols="50"></textarea>
+            <textarea id="answers" class="inputs" placeholder="enter answers. new answer - new line (enter needed)" rows="30" cols="50"></textarea>
+            <button class="button" id="generateBtn" onclick="getWords()">generate</button>
         </div>
         <script src="/generator.js"></script>
     </body>

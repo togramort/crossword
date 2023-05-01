@@ -50,17 +50,37 @@ label {
 }
 
 .grid {
-    width: 816.6px;
-    height: 816.6px;
-    margin-left: 20px;
+    width: 810px;
+    height: 810px;
+    margin-left: 10px;
     margin-top: 20px;
+    margin-right: 20px;
     border: 25px solid #333;
     float: left;
 }
 
+.output {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    vertical-align: top;
+}
+
+.outputs {
+    display: block;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: auto;
+    border: 15px solid #333;
+    text-align: left;
+    font-size: large;
+    padding-left: 3mm;
+}
+
 .inputQ {
     float: left;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .inputs {
@@ -71,24 +91,6 @@ label {
     width: 300px;
     font-size: large;
     clear: both;
-}
-
-.output {
-    float: left;
-    margin-left: 10px;
-    display: flex;
-    align-items: stretch;
-}
-
-.outputs {
-    display: inline-block;
-    margin-right: 20px;
-    margin-top: 20px;
-    width: 400px;
-    border: 15px solid #333;
-    text-align: left;
-    font-size: large;
-    padding-left: 3mm;
 }
 
 .slot {
