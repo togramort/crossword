@@ -86,8 +86,6 @@ function printClues() {
     }
 }
 
-
-
 function checkCrossword() {
     let allCorrect = true;
     for (var p = 0; p < gridAll.length; ++p) {
