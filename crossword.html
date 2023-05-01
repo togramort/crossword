@@ -5,12 +5,25 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-  <button id="getCross" class="button" onclick="displayCrosswordPuzzle()">get crossword</button>
+  <div class="buttonGroup">
+    <button id="getCross" class="button" onclick="displayCrosswordPuzzle()">get crossword</button>
+    <button class="button" id="sendBtn" onclick="checkCrossword()">check!</button>
+  </div>
   <div id="grid" class="grid"></div>
   <div id="output" class="output">
   <div id="questionsV" class="outputs"></div>
   <div id="questionsH" class="outputs"></div>
-  <button class="button" id="sendBtn" onclick="checkCrossword()">check!</button>
   <script src="/crossword.js"></script>
 </body>
+<style>
+  .buttonGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button {
+    margin: 10px 10px;
+  } 
+</style>
 </html>

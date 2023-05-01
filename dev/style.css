@@ -58,17 +58,17 @@ label {
     border: 25px solid #333;
     float: left;
 }
-
+  
 .output {
     margin-left: 10px;
+    float: left;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
-    vertical-align: top;
 }
-
+  
 .outputs {
-    display: block;
+    display: inline-block;
     margin-right: 20px;
     margin-top: 20px;
     width: auto;
