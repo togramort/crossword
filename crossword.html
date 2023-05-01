@@ -5,21 +5,6 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-  <script>
-    window.onload = function() {
-      for (var p = 0; p < gridAll.length; ++p) {
-          if (gridAll[p].symbol != '_' && isNaN(gridAll[p].symbol)) {
-              let i = gridAll[p].x;
-              let j = gridAll[p].y;
-              let temp = document.getElementById("i_" + i + "_" + j);
-              let value = localStorage.getItem("i_" + i + "_" + j);
-              if (value !== null) {
-                  temp.value = value;
-              }
-          }
-      }
-    };
-  </script>
    <button id="getCross" class="button" onclick="printGrid()">get crossword</button>
    <div id="grid" class="grid"></div>
    <div id="output" class="output">

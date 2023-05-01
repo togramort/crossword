@@ -40,7 +40,6 @@ for (let slot = 0; slot < slots; slot++) {
 getJson();
 
 function printGrid() {
-    makeGrid();
     displayCrosswordPuzzle(gridAll);
 }
 
@@ -115,12 +114,8 @@ function checkCrossword() {
                 temp.style.backgroundColor = "#FF0000";
 
             }
-            temp.setAttribute("readonly", true);
-            // Сохраняем значение ячейки в localStorage
-            localStorage.setItem("i_" + i + "_" + j, letter);
         }
     }
-
 
     if (allCorrect == true) {
         alert("wooow congrats! al good ;)");
