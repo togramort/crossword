@@ -39,19 +39,7 @@ for (let slot = 0; slot < slots; slot++) {
 }
 getJson();
 
-function printGrid() {
-    displayCrosswordPuzzle(gridAll);
-}
-
-function makeGrid() {
-    for (let row = 0; row < gridSize; row++) {
-        for (let column = 0; column < gridSize; column++) {
-            gridAll[row][column] = emptyCell;
-        }
-    }
-}
-
-function displayCrosswordPuzzle(bestGrid) {
+function displayCrosswordPuzzle() {
     for (var i = 0; i < gridAll.length; ++i) {
         var row = gridAll[i].x;
         var column = gridAll[i].y;
@@ -107,17 +95,24 @@ function checkCrossword() {
             let i = gridAll[p].x;
             let j = gridAll[p].y;
             let temp = document.getElementById("i_" + i + "_" + j);
+            let thisSlot = document.getElementById(i + "_" + j);
             let letter = temp.value;
             let res = gridAll[p].symbol;
-            if (letter != res) {
+            if (letter.toLowerCase() != res) {
                 allCorrect = false;
-                temp.style.backgroundColor = "#FF0000";
-
+                thisSlot.style.backgroundColor = "#FF0000";
             }
         }
     }
 
     if (allCorrect == true) {
+        let slots = document.getElementsByClassName("slot");
+        for (let i = 0; i < slots.length; i++) {
+            let input = slots[i].getElementsByClassName("inputLetter");
+            if (input.length > 0) {
+                slots[i].style.backgroundColor = 'rgb(153, 255, 153)';
+            }
+        }
         alert("wooow congrats! al good ;)");
     } else if (allCorrect == false) {
         alert("naaah something wrong ;(");
@@ -125,9 +120,6 @@ function checkCrossword() {
         alert ("unexpected error");
     }
 }
-
-
-
 
 function getCurrentSlot(x, y) {
     const currentSlot = gridAll.find(slot => slot.x === x && slot.y === y);
