@@ -159,13 +159,13 @@ document.addEventListener('keydown', function(event) {
     let nextSlot;
 
     if (event.key === 'ArrowRight' && right) {
-      nextSlot = right;
+        nextSlot = right;
     } else if (event.key === 'ArrowLeft' && left) {
-      nextSlot = left;
+        nextSlot = left;
     } else if (event.key === 'ArrowDown' && down) {
-      nextSlot = down;
+        nextSlot = down;
     } else if (event.key === 'ArrowUp' && up) {
-      nextSlot = up;
+        nextSlot = up;
     } else {
       return;
     }
